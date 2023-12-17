@@ -93,7 +93,7 @@
         width: 80%;
         margin: 40px 0;
 
-        .myActivities {
+        .myActivities, .activities {
             padding: 30px 10px;
             border-bottom: 1px solid gray;
             display: flex;
@@ -102,16 +102,16 @@
             align-items: center;
             gap: 10px;
 
-            .myActivitiesTitle {
+            .myActivitiesTitle, .activitesTitle {
                 font-size: 36px;
             }
 
-            .myActivitiesCon {
+            .myActivitiesCon, .activitiesCon {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 30px;
-                .myActivity {
+                .myActivity, .activity {
                     width: 45%;
                     background-color: #fff;
                     border-radius: 15px;
@@ -119,18 +119,18 @@
                     -webkit-box-shadow: 0px 10px 9px 6px rgba(34, 60, 80, 0.2);
                     -moz-box-shadow: 0px 10px 9px 6px rgba(34, 60, 80, 0.2);
                     box-shadow: 0px 10px 9px 6px rgba(34, 60, 80, 0.2);
-                    .myActivityTop {
+                    .myActivityTop, .activityTop {
                         display: flex;
                         justify-content: space-between;
                         gap: 25px;
                         align-items: center;
                         margin-bottom: 20px;
-                        .myActivityInfo {
+                        .myActivityInfo, .activityInfo {
                             display: flex;
                             justify-content: space-between;
                             gap: 10px;
                             align-items: center;
-                            .myActivityTextInfo {
+                            .myActivityTextInfo, .activityTextInfo {
                                 display: flex;
                                 flex-direction: column;
                                 gap: 4px;
@@ -156,13 +156,13 @@
                             border-radius: 50%;
                         }
     
-                        .myActivityPlaceTime {
+                        .myActivityPlaceTime, .activityPlaceTime{
                             gap: 10px;
                             display: flex;
                         }
                     }
     
-                    .myActivityText {
+                    .myActivityText, .activityText {
                         overflow: hidden;
                         text-overflow: ellipsis;
                         display: -webkit-box;
@@ -171,13 +171,13 @@
                         margin-bottom: 10px;
                     }
     
-                    .myActivityButtons {
+                    .myActivityButtons, .activityButtons {
                         display: flex;
                         gap: 20px;
                         justify-content: center;
                         margin-bottom: 10px;
     
-                        .myActivityMore, .myActivityDelete {
+                        .activityMore, .activityAccept, .myActivityDelete, .myActivityMore {
                             border: none;
                             outline: none;
                             background-color: transparent;
@@ -190,8 +190,12 @@
                             background-color: rgb(255, 72, 72);
                         }
     
-                        .myActivityMore {
+                        .activityMore, .myActivityMore {
                             background-color: rgb(84, 164, 255);
+                        }
+
+                        .activityAccept {
+                            background-color: #59b457;
                         }
                     }
     
