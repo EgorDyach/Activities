@@ -1,14 +1,44 @@
 import { PropTypes } from 'prop-types'
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { AuthContext } from '../context/AuthContext'
+import { updateDoc, doc } from 'firebase/firestore'
+import { db } from '../../firebase'
+import { translit } from '../translit'
 const Activity = ({element}) => {
+    const { currentUser } = useContext(AuthContext)
+    const [isMyActivity, setisMyActivity] = useState(false)
+    const handleSign = async () => {
+        if (element.authorId != currentUser.uid) {
+            console.log(123)
+            const task = doc(db, "tasks", (translit(element.title) + element.authorId));
+            console.log([...element['usersIn']])
+            let k = [...element["usersIn"], currentUser.uid]
+            await updateDoc(task, {
+                'usersIn': k,
+            });
+            alert('Вы записаны! Страница будет перезагружена')
+            location.reload()
+        }
+    }
+    useEffect(() => {
+        const f = async () => {
+            console.log(element.authorId, currentUser.uid)
+            console.log(element['usersIn'], currentUser.uid)
+             await setisMyActivity(!(element.authorId == currentUser.uid || element["usersIn"].includes(currentUser.uid)))
+             
+            }
+            f()
+    }, [currentUser.uid, element])
+    // useEffect(() => {
+    // }, [element["usersIn"]])
     return (
-        <div className='activity' id={element.uid}>
+        <div className='activity' key={element.uid}>
             <div className="activityTop">
                 <div className="activityInfo">
                     <img src={element.photoURL} alt="" />
                     <div className="activityTextInfo">
-                        <span className='name'>{element.name}</span>
+                        <span className='name'>{element.authorName}</span>
                         <span className='task'>{element.title}</span>
                     </div>
                 </div>
@@ -19,8 +49,7 @@ const Activity = ({element}) => {
             </div>
             <p className='activityText'>{element.descr}</p>
             <div className="activityButtons">
-                <button className='activityMore'>Подробнее</button>
-                <button className='activityAccept'>Записаться</button>
+                {isMyActivity && <button onClick={handleSign} className='activityAccept'>Записаться</button>}
             </div>
         </div>
     )

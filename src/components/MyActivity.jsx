@@ -20,7 +20,6 @@ const MyActivity = () => {
       </div>
       <p className='myActivityText'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur natus, commodi necessitatibus iste distinctio consequatur consequuntur odio perferendis perspiciatis. Eaque explicabo ducimus temporibus sit possimus quod quisquam est blanditiis voluptas?</p>
       <div className="myActivityButtons">
-      <button className='myActivityMore'>Подробнее</button>
       <button className='myActivityDelete'>Удалить</button>
       </div>
       <div className="myActivityUsers">

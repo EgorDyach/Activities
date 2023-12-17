@@ -11,18 +11,15 @@ import { ActivitiesContext } from "../context/ActivitiesContext"
 const Home = () => {
     const { currentUser } = useContext(AuthContext)
     const { activitiesArray } = useContext(ActivitiesContext)
-    console.log(activitiesArray)
-    const handleAdd = () => {
-
-    }
+    const [isModalActive, setModalActive] = useState(false)
     return (
         <div className="formCon">
             <div className="container homeContainer">
                 <span className="title">Сириус-активности</span>
-                <button onClick={handleAdd} className="addActivity">Создать активность</button>
+                <button onClick={setModalActive} className="addActivity">Создать активность</button>
                 <MyActivities />
                 <Activities />
-                <Modal />
+                {isModalActive && <Modal closeFunc={() => setModalActive(false)} />}
                 <div className="navbar">
                     <img src={currentUser.photoURL} alt="" />
                     <span>{currentUser.displayName}</span>
