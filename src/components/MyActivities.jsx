@@ -13,7 +13,7 @@ const MyActivities = () => {
             <div className="myActivitiesCon">
             {activitiesArray.map((e) => {
                 console.log(currentUser.uid)
-                return currentUser.uid == e.authorId &&  <MyActivity element={e} key={activitiesArray.indexOf(e)} />
+                return currentUser.uid == e.authorId &&  <MyActivity e={e} key={activitiesArray.indexOf(e)} />
                 })}
             </div>
         </div>

@@ -10,9 +10,7 @@ const Activity = ({element}) => {
     const [isMyActivity, setisMyActivity] = useState(false)
     const handleSign = async () => {
         if (element.authorId != currentUser.uid) {
-            console.log(123)
             const task = doc(db, "tasks", (translit(element.title) + element.authorId));
-            console.log([...element['usersIn']])
             let k = [...element["usersIn"], currentUser.uid]
             await updateDoc(task, {
                 'usersIn': k,
@@ -23,8 +21,6 @@ const Activity = ({element}) => {
     }
     useEffect(() => {
         const f = async () => {
-            console.log(element.authorId, currentUser.uid)
-            console.log(element['usersIn'], currentUser.uid)
              await setisMyActivity(!(element.authorId == currentUser.uid || element["usersIn"].includes(currentUser.uid)))
              
             }
