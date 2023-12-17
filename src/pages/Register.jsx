@@ -1,4 +1,4 @@
-import Add from "../img/AddAvatar.png"
+import Add from "../img/addAvatar.png"
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, storage, db } from "../../firebase";
 import { useState } from "react";
